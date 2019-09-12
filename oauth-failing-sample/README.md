@@ -9,11 +9,12 @@ redirect_uri uri seems to get dropped during the auth flow and as a result SSO c
 
 **Things to consider:**
 - This sample application uses the app supplied properties from [application.yml](src/main/resources/application.yml) file to identify/configure it's oAuth2 provider.
+- There is no SSO service directly bound to the application.
 
-Findings so far:
+**Findings so far:**
 - Changing the oAuth2 `client.registration` to google from uaa in the [application.yml](src/main/resources/application.yml) works as expected and call_back is made to the app after the google auth.
 - Client provides the valid redirect (app route) in the original request, and the same is whitelisted.
-
+- Adding any of Spring/SSO specific dependencies, doesn't show any difference in the failing behavior.
 
 References:  
 [1] https://spring.io/blog/2018/07/30/spring-security-5-1-0-m2-released#ability-to-create-clientregistration-from-oidc-discovery
