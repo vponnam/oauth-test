@@ -1,0 +1,24 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          uaa:
+            client-id: <REDACTED>
+            client-secret: <REDACTED>
+            authorization-grant-type: authorization_code
+          google:
+            provider: google
+            client-id: <REDACTED>
+            client-secret: <REDACTED>
+        provider:
+          google:
+            issuer-uri: https://accounts.google.com
+          uaa:
+           issuer-uri: https://<auth-domain>.uaa.<sys-domain>/oauth/token
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        security: DEBUG

@@ -1,0 +1,15 @@
+---
+applications:
+- name: uaa-redirect-working 
+  instances: 1
+  path: target/demo-0.0.1-SNAPSHOT.jar
+  buildpacks:
+  - java_buildpack_offline
+  services:
+  - pcf-sso-test
+  env:
+    SSO_IDENTITY_PROVIDERS: qa-adfs-single-sign-on
+    SSO_REDIRECT_URIS: https://uaa-redirect-working.apps.sb01.useast.cf.ford.com,https://uaa-redirect-working.apps.sb01.useast.cf.ford.com/**,https://uaa-redirect-working.apps.sb01.useast.cf.ford.com/login/oauth2/code/uaa
+    SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_SSO_SCOPE: openid,profile,user_attributes
+    GRANT_TYPE: authorization_code
+    SSO_SCOPES: openid,profile,user_attributes
